@@ -510,6 +510,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4296257541569132995, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296257541569132995, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 4695596920408186026, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
       propertyPath: teaSpill
       value: 
@@ -518,6 +526,10 @@ PrefabInstance:
       propertyPath: teaReceive
       value: 
       objectReference: {fileID: 1692530068}
+    - target: {fileID: 4695596920408186026, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: trophyHeight
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6091644860346223151, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -596,8 +608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca754d476944e7e41b971b4b8da5c114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  failureThreshold: 200
+  failureThreshold: 100
   spillCount: 0
+  teaSpillKey: TeaSpill
+  teaReceive: {fileID: 0}
 --- !u!61 &636072203
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1404,6 +1418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReceivedTeaCount: 0
   particleEffect: {fileID: 1094251222}
+  teaReceiveKey: TeaReceive
 --- !u!1 &1694601765
 GameObject:
   m_ObjectHideFlags: 0

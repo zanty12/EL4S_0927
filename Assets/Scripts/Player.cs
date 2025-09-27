@@ -16,8 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float balanceInputIncrement = 0.6f;
     [SerializeField] private float counterBalanceInputMultiplier = 2f;
 
-    [Header("Enhanced Randomness")]
-    [SerializeField] private float baseRandomRange = 0.1f;
+    [Header("Enhanced Randomness")] [SerializeField]
+    private float baseRandomRange = 0.1f;
+
     // Multiplier for the current balance value. A higher value means the positive
     // feedback is stronger (harder to recover).
     [SerializeField] private float momentumBiasMultiplier = 0.2f;
@@ -41,7 +42,11 @@ public class Player : MonoBehaviour
         float maxRandom = baseRandomRange;
 
         // The final random value will be between (minRandom + momentumBias) and (maxRandom + momentumBias)
-        float totalRandomChange = UnityEngine.Random.Range(minRandom, maxRandom) + momentumBias;
+        float totalRandomChange = UnityEngine.Random.Range(minRandom, maxRandom);
+        //increase randomness when too low
+        totalRandomChange = (totalRandomChange > -0.1f && totalRandomChange < 0.1f)?
+            totalRandomChange * 2 : totalRandomChange;;
+        totalRandomChange += momentumBias;
 
         // 3. Apply the combined environmental and momentum-based change
         balance += totalRandomChange * Time.deltaTime;
