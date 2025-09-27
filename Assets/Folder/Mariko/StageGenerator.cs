@@ -34,6 +34,9 @@ public class StageGenerator : MonoBehaviour
         {0, 1, 1, 1, 0},
     };
 
+    [SerializeField] private float generationInterval = 2.0f; // Interval in seconds
+    private float timeSinceLastGeneration = 0.0f;
+
     void Awake()
     {
 
@@ -115,6 +118,21 @@ public class StageGenerator : MonoBehaviour
                 GameObject floor = Instantiate(_blockList[data[y, x]]._prefab, spawnPos, Quaternion.identity, _stageParent);
                 floor.transform.localScale = new Vector3(cellSize, cellSize, 0.0f);
             }
+        }
+    }
+
+    private void Update()
+    {
+        timeSinceLastGeneration+= Time.deltaTime;
+        if (timeSinceLastGeneration >= generationInterval)
+        {
+            // ランダム生成
+            int[,] mapData = RandomCreateMap();
+
+            // ステージ生成
+            GenerateStage(mapData);
+
+            timeSinceLastGeneration = 0.0f;
         }
     }
 }
