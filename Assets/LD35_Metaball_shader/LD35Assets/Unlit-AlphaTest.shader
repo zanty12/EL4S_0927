@@ -14,12 +14,17 @@ Properties {
 
 	_Stroke ("Stroke alpha", Range(0,1)) = 0.1
 	_StrokeColor ("Stroke color", Color) = (1,1,1,1)
+
+	_StrokeViewAlpha("StrokeViewAlpha", Range(0, 1)) = 0.7
 }
 SubShader {
-	Tags {"Queue"="AlphaTest" "IgnoreProjector"="True" "RenderType"="TransparentCutout"}
+	 Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
 	LOD 100
 
 	Lighting Off
+
+	ZWrite Off                     // 透過オブジェクトは深度書き込みをオフ
+    Blend SrcAlpha OneMinusSrcAlpha // アルファブレンドを有効化
 
 	Pass {  
 		CGPROGRAM
@@ -47,6 +52,7 @@ SubShader {
 
 			fixed _Stroke;
 			half4 _StrokeColor;
+			fixed _StrokeViewAlpha;
 
 			v2f vert (appdata_t v) {
 				v2f o;
@@ -57,14 +63,15 @@ SubShader {
 			
 			fixed4 frag (v2f i) : SV_Target {
 				fixed4 col = tex2D(_MainTex, i.texcoord);
+
 				clip(col.a - _Cutoff);
 
 				if (col.a < _Stroke) {
 					col = _StrokeColor;
+					col.a = _StrokeViewAlpha;
 				} else {
 					col = _Color;
 				}
-
 				return col;
 			}
 		ENDCG
