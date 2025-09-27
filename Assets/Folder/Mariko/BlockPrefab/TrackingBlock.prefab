@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2158348066570830748}
   - component: {fileID: 6882181154703297784}
   - component: {fileID: -4242659175653338870}
+  - component: {fileID: 6878668395962133865}
   m_Layer: 0
-  m_Name: Block
-  m_TagString: Untagged
+  m_Name: TrackingBlock
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.35220122, g: 0.26351961, b: 0.17831568, a: 1}
+  m_Color: {r: 0.16666657, g: 1, b: 0.19051558, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,3 +135,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6878668395962133865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449365877681774261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a9b2e4c09ba4b4daaeb6d211326c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveForce: 0.001
+  _target: {fileID: 0}

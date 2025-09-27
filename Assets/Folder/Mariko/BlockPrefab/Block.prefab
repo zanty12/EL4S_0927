@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2158348066570830748}
   - component: {fileID: 6882181154703297784}
-  - component: {fileID: 2671931259492140826}
+  - component: {fileID: -4242659175653338870}
   m_Layer: 0
-  m_Name: Floor
-  m_TagString: Untagged
+  m_Name: Block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.91509426, g: 1, b: 0.981687, a: 1}
+  m_Color: {r: 0.35220122, g: 0.26351961, b: 0.17831568, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2671931259492140826
+--- !u!61 &-4242659175653338870
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
