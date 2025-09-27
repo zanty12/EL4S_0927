@@ -1615,7 +1615,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 44
+    m_FontSize: 49
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1992,7 +1992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1154261862}
-  sceneAsset: {fileID: 102900000, guid: 186796ab9e8ca364994b11ba5ffbf975, type: 3}
+  sceneAsset: {fileID: 102900000, guid: fbb766c19db001d439887a6ceda89669, type: 3}
 --- !u!114 &1283795265
 MonoBehaviour:
   m_ObjectHideFlags: 0
