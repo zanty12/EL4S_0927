@@ -6,6 +6,8 @@ public class TeaReceive : MonoBehaviour
     [SerializeField] private GameObject particleEffect;
     private float particleEffectDuration = 1.5f;
     private float particleEffectTimer = 0.0f;
+    [SerializeField]private string teaReceiveKey = "TeaReceive";
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<TeaBall>())
@@ -30,5 +32,10 @@ public class TeaReceive : MonoBehaviour
                 particleEffectTimer = 0.0f;
             }
         }
+    }
+
+    public void receivedTeaCountSave()
+    {
+        PlayerPrefs.SetFloat(teaReceiveKey, ReceivedTeaCount);
     }
 }
