@@ -14,9 +14,10 @@ public class HeightUI : MonoBehaviour
     [SerializeField]private float trophyDisplayDuration = 5.0f; // Duration to display the trophy message
     [SerializeField] private GameObject trophyMessage; // Reference to the trophy message UI element
     private TextMeshProUGUI trophyText;
+    //tophyheightに達したときの音
     [SerializeField]private AudioSource trophySound; // Sound to play when trophy is reached
     [SerializeField]private AudioClip trophyClip;
-
+    [SerializeField] private AudioClip secretClip;
 
 
 
@@ -48,6 +49,11 @@ public class HeightUI : MonoBehaviour
         {
             currentHeight += trophyHeight;
             OnTrophyDraw();
+        }
+        if(heightOffset > 99999.0f)
+        {
+            heightOffset = 0.0f;
+            trophySound?.PlayOneShot(secretClip);
         }
         UiDraw();
     }
