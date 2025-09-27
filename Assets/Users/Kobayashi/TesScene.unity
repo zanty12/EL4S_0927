@@ -335,6 +335,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2089945368}
     m_Modifications:
+    - target: {fileID: 69728418669622535, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -218
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354037475170708475, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_text
+      value: 00000oz
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354037475170708475, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396596381927412083, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_text
+      value: "-\xA3000,000,000"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396596381927412083, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_fontSize
+      value: 61.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2231389963528467441, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
       propertyPath: m_ReferencePixelsPerUnit
       value: 1
@@ -427,6 +447,10 @@ PrefabInstance:
       propertyPath: secretClip
       value: 
       objectReference: {fileID: 8300000, guid: c9548f37f92747e449618064ca620b0d, type: 3}
+    - target: {fileID: 6091644860346223151, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 228
+      objectReference: {fileID: 0}
     - target: {fileID: 7650066250725923594, guid: 8d6ebfa08f200b948b0eb37252cecbcd, type: 3}
       propertyPath: m_Name
       value: HeightUiCanvas

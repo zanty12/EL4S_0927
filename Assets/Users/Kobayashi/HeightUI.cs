@@ -9,7 +9,7 @@ public class HeightUI : MonoBehaviour
     private float heightOffset = 0.0f; // Offset to adjust the height display
 
     //淹れた量がtrophyHeightに達したら何か表示
-    [SerializeField] private float trophyHeight = 1000.0f; // Height at which the trophy appears
+    [SerializeField] private float trophyHeight = 100.0f; // Height at which the trophy appears
     private float currentHeight = 0.0f; // Current height of the player
     [SerializeField]private float trophyDisplayDuration = 5.0f; // Duration to display the trophy message
     [SerializeField] private GameObject trophyMessage; // Reference to the trophy message UI element
@@ -105,11 +105,11 @@ public class HeightUI : MonoBehaviour
     {
         if (heightText != null)
         {
-            heightText.text = heightOffset.ToString("00000") + " L";
+            heightText.text = heightOffset.ToString("00000") + " oz";
         }
         if (spillLossText != null)
         {
-            spillLossText.text = "-$" + teaSpill.spillCount.ToString("000") + "0000";
+            spillLossText.text = "-£" + teaSpill.spillCount.ToString("000") + ",000,000";
         }
     }
 
