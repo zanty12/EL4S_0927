@@ -4,20 +4,28 @@ using TMPro;
 
 public class HeightUI : MonoBehaviour
 {
-    //進んだ距離を表示するUI
+    //淹れた量を表示するUI
     [SerializeField] private TextMeshProUGUI heightText;
     private float heightOffset = 0.0f; // Offset to adjust the height display
 
-    //進んだ距離がtrophyHeightに達したら何か表示
+    //淹れた量がtrophyHeightに達したら何か表示
     [SerializeField] private float trophyHeight = 1000.0f; // Height at which the trophy appears
     private float currentHeight = 0.0f; // Current height of the player
     [SerializeField]private float trophyDisplayDuration = 5.0f; // Duration to display the trophy message
     [SerializeField] private GameObject trophyMessage; // Reference to the trophy message UI element
     private TextMeshProUGUI trophyText;
+
+    //溢した量のテキスト
+    [SerializeField]private TextMeshProUGUI spillLossText;
+
     //tophyheightに達したときの音
     [SerializeField]private AudioSource trophySound; // Sound to play when trophy is reached
     [SerializeField]private AudioClip trophyClip;
     [SerializeField] private AudioClip secretClip;
+
+    //注げた量とこぼした量を表示する
+    [SerializeField] private TeaSpill teaSpill;//こぼした量を取得するため
+    [SerializeField] private TeaReceive teaReceive;//注いだ量を取得するため
 
 
 
@@ -37,10 +45,19 @@ public class HeightUI : MonoBehaviour
         {
             trophySound.clip = trophyClip;
         }
+        if (!teaSpill)
+        {
+            teaSpill = FindAnyObjectByType<TeaSpill>();
+        }
+        if(!teaReceive)
+        {
+            teaReceive = FindAnyObjectByType<TeaReceive>();
+        }
         heightOffset = 0.0f;
         currentHeight = trophyHeight;
         UiDraw();
     }
+
 
     //前回の高さからのオフセットを加算
     public void AddHeightOffset(float offset)
@@ -64,22 +81,35 @@ public class HeightUI : MonoBehaviour
         }
     }
 
-#if UNITY_EDITOR
+    int _lastReceivedTeaCount = 0;
+    int _lastSpillLossCount = 0;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+       if(_lastReceivedTeaCount != teaReceive.ReceivedTeaCount)
         {
-            AddHeightOffset(100.0f); // Increase height offset by 10 meters
+            heightOffset += (teaReceive.ReceivedTeaCount - _lastReceivedTeaCount)*0.1f;
+            _lastReceivedTeaCount = teaReceive.ReceivedTeaCount;
+            CheckTorophyHeight();
+            UiDraw();
+        }
+        if (_lastSpillLossCount != teaSpill.spillCount)
+        {
+            _lastSpillLossCount = teaSpill.spillCount;
+            CheckTorophyHeight();
+            UiDraw();
         }
     }
-#endif
 
     private void UiDraw()
     {
         if (heightText != null)
         {
-            heightText.text = heightOffset.ToString("00000") + " m";
+            heightText.text = heightOffset.ToString("00000") + " L";
+        }
+        if (spillLossText != null)
+        {
+            spillLossText.text = "-$" + teaSpill.spillCount.ToString("000") + "0000";
         }
     }
 
@@ -87,7 +117,7 @@ public class HeightUI : MonoBehaviour
     {
         trophySound?.PlayOneShot(trophyClip);
         trophyMessage.SetActive(true);
-        trophyText.text = "Congratulations!\n You've reached\n" + currentHeight.ToString("00000") + " m!";
+        trophyText.text = "Congratulations!\n You've reached\n" + currentHeight.ToString("00000") + " L!";
         Invoke("OffTrophyDraw", trophyDisplayDuration);
     }
     private void OffTrophyDraw()
