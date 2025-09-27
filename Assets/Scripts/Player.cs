@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private KeyCode rightKey = KeyCode.D;
 
     [SerializeField] private float balanceInputIncrement = 0.6f;
+    [SerializeField] private float counterBalanceInputMultiplier = 2f;
 
     [Header("Enhanced Randomness")]
     [SerializeField] private float baseRandomRange = 0.1f;
@@ -48,12 +49,27 @@ public class Player : MonoBehaviour
         // 4. Apply Player Input
         if (Input.GetKey(leftKey))
         {
-            balance -= balanceInputIncrement * Time.deltaTime;
+            // if the player is pressing left while tilting right, apply a stronger counter force
+            if (balance > 0)
+            {
+                balance -= balanceInputIncrement * counterBalanceInputMultiplier * Time.deltaTime;
+            }
+            else
+            {
+                balance -= balanceInputIncrement * Time.deltaTime;
+            }
         }
 
         if (Input.GetKey(rightKey))
         {
-            balance += balanceInputIncrement * Time.deltaTime;
+            if (balance < 0)
+            {
+                balance += balanceInputIncrement * counterBalanceInputMultiplier * Time.deltaTime;
+            }
+            else
+            {
+                balance += balanceInputIncrement * Time.deltaTime;
+            }
         }
 
         // 5. Clamp and Apply Movement
