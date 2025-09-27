@@ -42,20 +42,26 @@ public class HeightUI : MonoBehaviour
         UiDraw();
     }
 
+    //前回の高さからのオフセットを加算
     public void AddHeightOffset(float offset)
     {
         heightOffset += offset;
+        CheckTorophyHeight();
+        UiDraw();
+    }
+
+    private void CheckTorophyHeight()
+    {
         if (currentHeight < heightOffset)
         {
             currentHeight += trophyHeight;
             OnTrophyDraw();
         }
-        if(heightOffset > 99999.0f)
+        if (heightOffset > 99999.0f)
         {
             heightOffset = 0.0f;
             trophySound?.PlayOneShot(secretClip);
         }
-        UiDraw();
     }
 
 #if UNITY_EDITOR
