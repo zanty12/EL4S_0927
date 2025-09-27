@@ -80,6 +80,7 @@ Material:
     - _SecondaryAlpha: 0.437
     - _SrcBlend: 1
     - _Stroke: 0.119
+    - _StrokeViewAlpha: 0.519
     - _TertiaryAlpha: 0.334
     - _UVSec: 0
     - _ZWrite: 1
