@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kemuri_0: 5628271608978257059
+      kemuri_1: -5002280857263098662
+      kemuri_2: -2099384245997416934
+      kemuri_3: 9153010836000756294
+      kemuri_4: -6514087999522825247
+      kemuri_5: -2322626576932634159
+      kemuri_6: 738228007083183096
+      kemuri_7: -8369610436240151196
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
